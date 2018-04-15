@@ -21,7 +21,7 @@ const BUTTONVALUE = [
     {value: '=',type:'equal'}
 ];
 
-export default class ChatInput extends Component {
+export default class Calculator extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,32 +30,24 @@ export default class ChatInput extends Component {
             myId: this.props.myId,
             myName: this.props.myName,
             valueText : '0',
-            record:[], //user+date+string
         }
     }
 
-    //监听所有按钮的click事件
+//Listen to click
     handleValueInput(data) {
     let curState = this.state.valueText;
     let res = this.checkClickType(curState,data);
     this.setState({valueText:res})
 }
 
-//根据按钮自带的type属性来做不同的反应
+//Calculator input tppe
     checkClickType(cur_value,data){
-        let initFlag = cur_value === '0'&& data.type!=='point';//初次输入且不打算输入小数
+        let initFlag = cur_value === '0'&& data.type!=='point';//whether input '.' at first
         const socket = this.state.socket;
         switch (data.type) {
             case 'equal': //=
                 let val = eval(cur_value)+'';
                 let resultbefore = cur_value + ' = ' +val;
-                let username = this.props.myName;
-                console.log(resultbefore,'suanshi');
-                console.log(val,'jieguo');
-                let myDate = new Date();
-                let time = myDate.toLocaleString();
-                this.state.record.push({time:time,user:username,value:resultbefore});
-                console.log(this.state.record,'record');
                 if (resultbefore) {
                     const obj = {
                         uid: this.state.myId,
@@ -74,11 +66,11 @@ export default class ChatInput extends Component {
                 cur_value = '0';
                 return cur_value;
 
-            case 'operator'://操作符
-                //不能出现连续操作符的情况
+            case 'operator':
+                //cannot have two operators in consistant
                 let valueArr = cur_value.split(' ');
-                if(valueArr[valueArr.length-1]===''&&valueArr[valueArr.length-2]!==')'){
-                    //删除操作符及左右的空格
+                if(valueArr[valueArr.length-1]===''){
+                    //replace the opeartor in array
                     cur_value =  cur_value.substring(0,cur_value.length-3)
                     return  cur_value + ' ' + data.value + ' ';
                 }
@@ -90,21 +82,20 @@ export default class ChatInput extends Component {
                 }
                 if(data.value==='0'){
                     let valueArr = cur_value.split(' ');
-                    //如果前面的符号为/
+                    // divisor cannot be 0
                     if(valueArr[valueArr.length-2]==='/'){
                         alert('Divisor Cannot Be 0!');
-                        return cur_value;//直接清零
+                        return cur_value;
                     }
                 }
                 return cur_value + data.value
         }
     }
 
-        //生成按钮列表
     initButtonList(list,value){
         value.forEach(data => {
             list.push(
-                <button className='div_class_button'
+                <button className='cal_button'
                     key={data.value}
                     onClick = {this.handleValueInput.bind(this,data)}
                 >{data.value}</button>
@@ -114,21 +105,21 @@ export default class ChatInput extends Component {
     }
 
     render() {
-      let buttonlist = [];//按钮列表
+      let buttonlist = [];
       buttonlist = this.initButtonList(buttonlist,BUTTONVALUE);
         return(
-            <div className='div_class_calculator'>
-                    <div className='div_class_databar'>
+            <div className='calculator'>
+                    <div className='databar'>
                         <h1>Calculator</h1>
                         <input type="text"
                             value={this.state.valueText}
                             readOnly
                         />
                     </div>
-                    <div className='div_class_buttonlist'>
+                    <div className='cal_buttonlist'>
                         {buttonlist}
                     </div>
-                </div>
+            </div>
             )
     }
 }

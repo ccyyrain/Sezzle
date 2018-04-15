@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import RoomStatus from './RoomStatus';
+import Status from './Status';
 import Messages from './Messages';
-import ChatInput from './ChatInput';
+import Calculator from './Calculator';
 
 
-export default class ChatRoom extends Component {
+export default class Main extends Component {
     constructor(props) {
         super(props);
         const socket = this.props.socket;
@@ -65,6 +65,9 @@ export default class ChatRoom extends Component {
         hour = (hour==0) ? '00' : hour;
         minute = (minute<10) ? '0' + minute : minute;
         return hour + ':' + minute;
+        // let myDate = new Date();
+        // let time = myDate.toLocaleString();
+        // return time;
     }
 
     handleLogout() {
@@ -86,17 +89,17 @@ export default class ChatRoom extends Component {
 
     render() {
         return(
-            <div className="chat-room">
+            <div className="main">
                 <div className="welcome">
-                    <div className="room-name">Online Calculator | Nickname: {this.state.myName}</div>
-                    <div className="button">
+                    <div className="app-name">Online Calculator | Nickname: {this.state.myName}</div>
+                    <div className="logout-button">
                         <button onClick={this.handleLogout}>Log Out</button>
                     </div>
                 </div>
-                <RoomStatus onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>
-                <div ref="chatArea">
+                <Status onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>
+                <div>
                     <Messages messages={this.state.messages} myId={this.state.myId} />
-                    <ChatInput myId={this.state.myId} myName={this.state.myName} socket={this.state.socket}/>
+                    <Calculator myId={this.state.myId} myName={this.state.myName} socket={this.state.socket}/>
                 </div>
             </div>)
     }

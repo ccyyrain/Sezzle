@@ -14,14 +14,14 @@ $breakpoint-tablet: 768px;
     box-sizing: border-box;
 }
 body {
-    background: url('../imgs/whaletail.jpg') center center;
+    background: url('../imgs/cube.png') center center;
     background-size: cover;
     background-attachment: fixed;
     font-size:15px;
 }
 @media (max-width: $breakpoint-tablet) {
     body{
-        background: url('../imgs/bg.jpg') center center;
+
         background-size: cover;
         background-attachment: fixed;
     }
@@ -82,7 +82,7 @@ body {
     }
 }
 
-.log_button {
+.logout-button {
     float:right;
     width:20%;
     button {
@@ -105,7 +105,7 @@ body {
     }
 }
 
-.chat-room {
+.main {
     color:#fff;
     .welcome {
         @include clearfix;
@@ -116,99 +116,96 @@ body {
         position:fixed;
         top:0;
         line-height:24px;
-        .room-name {
+        .app-name {
             float:left;
             margin-left:5%;
         }
     }
 }
 
-.room-status {
+.status {
     margin-top:50px;
     text-align:center;
     font-size: 13px;
+    margin-bottom: 30px;
 }
-
-
 
 .messages {
   float: right;
   margin-right: 50px;
   height: 600px;
-  width: 30%;
+  width: 40%;
   flex-direction: column;
   overflow-y: scroll;
   overflow-x: scroll;
-  font-size: 15px;
-    .one-message.system-message {
-        font-size: 13px;
-        color: #e0e0e0;
-        flex-direction:row;
-        justify-content: center;
-        align-items: baseline;
-    }
+  border: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  h1{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    color: white;
+  }
     .one-message {
         padding-bottom:10px;
         display:flex;
         flex-direction:column;
         justify-content: flex-start;
         align-items: flex-start;
+        font-size: 20px;
         p {
             margin-bottom:5px;
         }
-        .time {
-            color: #e0e0e0;
-        }
         .message-content {
             color: rgba(0,0,0,0.870588);
-            padding: 5px 10px;
-            margin: 0;
+            width: 95%;
+            padding: 7px 10px;
+            margin-top: 2%;
+            margin-left: 3%;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.117647);
             word-break: break-all;
-            border-radius: 10px;
+            border-radius: 3px;
             display: inline-block;
             background-color: #f1f1f1;
         }
     }
     .one-message.me {
-        flex-direction:column;
-        justify-content:flex-start;
-        align-items: flex-end;
-        p {
-        }
         .message-content {
-            background: #a2e563;
+            //background: #34b7f1;
+            //background: #a2e563;
+            background: #37a1d6;
         }
     }
 }
 
-.div_class_calculator{
+.calculator{
     text-align: center;
     margin-left: 30px;
     padding-top: 15px;
     width: 640px;
     height: 500px;
     /* overflow: hidden; */
-    border: #fff 1px solid;
+    //border: #fff 1px solid;
     padding-bottom: 10px;
-    background-color: #f2f2f2;
-    border-radius:5px
+    background-color: #69b996;
+    border-radius:20px
 }
-.div_class_databar h1{
+.databar h1{
   color: black;
 }
 
-.div_class_databar input{
-    width: 600px;
-    height: 40px;
+.databar input{
+    width: 90%;
+    height: 50px;
     line-height: 24px;
     margin: 10px auto;
     text-align: right;
     font-size: 24px;
     font-weight:bold;
+    padding-right: 5%;
 }
 
-.div_class_buttonlist{
+.cal_buttonlist{
     width: 600px;
     height: auto;
     padding: 10px 0;
@@ -218,7 +215,7 @@ body {
     align-content: flex-start;
 }
 
-.div_class_button{
+.cal_button{
     box-sizing: border-box;
     flex: 0 0 19%;
     height: 68px;
@@ -226,12 +223,14 @@ body {
     margin-top: 8px;
     margin-right: 5px;
     cursor: pointer;
+    border-radius: 40px;
 }
 
 /*"="*/
-.div_class_button:nth-last-child(1){
+.cal_button:nth-last-child(1){
     font-size: 45px;
     font-weight: bold;
-    background: orangered;
+    //background: orangered;
     color: #fff;
+    background: #a2e563;
 }
