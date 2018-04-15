@@ -7,7 +7,6 @@ export default class Messages extends Component {
 
     componentDidUpdate() {
         const messageList = ReactDOM.findDOMNode(this.refs.messages);
-
         window.scrollTo(0, messageList.clientHeight + 50);
     }
     render() {
@@ -25,7 +24,9 @@ export default class Messages extends Component {
                     <Message key={message.msgId}  msgUser={message.username} action={message.action} isMe={(myId == message.uid)? true : false} time={message.time}/>
                 )
         })
-        return(<div className="messages" ref="messages">{oneMessage}</div>)
+        return(<div className="messages" ref="messages">
+        <h1>Most 10 Recent Results</h1>
+        {oneMessage}</div>)
     }
 }
 

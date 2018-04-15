@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ChatRoom from '../components/ChatRoom';
+import Main from '../components/Main';
 import './loginbox.scss';
 
 export default class App extends Component {
@@ -37,9 +37,6 @@ export default class App extends Component {
     // 登陆
     handleLogin() {
         let username = this.state.username;
-
-        // 随机生成游客名字
-        // username = '游客' + Math.floor(Math.random()*89+10)
         const uid = this.generateUid();
         if (!username) {
             username = 'Guest'+ uid;
@@ -50,7 +47,7 @@ export default class App extends Component {
     render() {
         let renderDOM;
         if (this.state.uid) {
-            renderDOM = <ChatRoom uid={this.state.uid} username={this.state.username} socket={this.state.socket}/>
+            renderDOM = <Main uid={this.state.uid} username={this.state.username} socket={this.state.socket}/>
         } else {
             renderDOM = (<div className="login-box">
                             <h2>Log In</h2>
