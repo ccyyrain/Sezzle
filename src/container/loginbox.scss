@@ -21,7 +21,6 @@ body {
 }
 @media (max-width: $breakpoint-tablet) {
     body{
-
         background-size: cover;
         background-attachment: fixed;
     }
@@ -133,7 +132,7 @@ body {
 .messages {
   float: right;
   margin-right: 50px;
-  height: 600px;
+  height: 550px;
   width: 40%;
   flex-direction: column;
   overflow-y: scroll;
@@ -182,7 +181,7 @@ body {
     text-align: center;
     margin-left: 30px;
     padding-top: 15px;
-    width: 640px;
+    width: 40%;
     height: 500px;
     /* overflow: hidden; */
     //border: #fff 1px solid;
@@ -206,8 +205,8 @@ body {
 }
 
 .cal_buttonlist{
-    width: 600px;
-    height: auto;
+    width: 90%;
+    height: 90%;
     padding: 10px 0;
     display: flex;
     flex-flow: row wrap;
@@ -218,10 +217,10 @@ body {
 .cal_button{
     box-sizing: border-box;
     flex: 0 0 19%;
-    height: 68px;
+    height: 20%;
     font-size: 20px;
     margin-top: 8px;
-    margin-right: 5px;
+    margin-right: 1%;
     cursor: pointer;
     border-radius: 40px;
 }
