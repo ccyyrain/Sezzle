@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Main from '../components/Main';
-import './loginbox.scss';
+import './style.scss';
 
 export default class App extends Component {
     constructor(props) {
@@ -17,12 +17,11 @@ export default class App extends Component {
         return new Date().getTime()+""+Math.floor(Math.random()*9+1);
     }
 
-    // 监控名称变化
+    // listen to the name input
     handleChange(e) {
         this.setState({username: e.target.value})
     }
 
-    // 监控点击提交或按回车
     handleClick(e) {
         e.preventDefault();
         this.handleLogin();
@@ -34,7 +33,6 @@ export default class App extends Component {
         return false;
     }
 
-    // 登陆
     handleLogin() {
         let username = this.state.username;
         const uid = this.generateUid();

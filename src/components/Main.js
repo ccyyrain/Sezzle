@@ -22,7 +22,7 @@ export default class Main extends Component {
         this.ready();
     }
 
-    // 处理在线人数及用户名
+    // GuestList
     handleUsers() {
         const users = this.state.onlineUsers;
         let userhtml = '';
@@ -36,12 +36,12 @@ export default class Main extends Component {
         this.setState({userhtml: userhtml})
     }
 
-    // 生成消息id
+    // Messageid
     generateMsgId() {
         return new Date().getTime()+""+Math.floor(Math.random()*899+100);
     }
 
-    // 更新系统消息
+    // Get login information
     updateSysMsg(o, action) {
         this.setState({
             onlineCount: o.onlineCount,
@@ -50,7 +50,7 @@ export default class Main extends Component {
         this.handleUsers();
     }
 
-    // 发送新消息
+    // Send calculation
     updateMsg(obj) {
         let messages = this.state.messages;
         const newMsg = {username:obj.username, uid:obj.uid, action:obj.message, msgId:this.generateMsgId(), time:this.generateTime(), timestamp:(new Date()).valueOf()};
@@ -58,7 +58,7 @@ export default class Main extends Component {
         this.setState({messages:messages})
     }
 
-    // 生成时间
+    // 24h time
     generateTime() {
         let hour = new Date().getHours(),
             minute = new Date().getMinutes();
@@ -73,7 +73,8 @@ export default class Main extends Component {
     handleLogout() {
         location.reload();
     }
-    // 开始监控socket
+    
+    // listen on socket
     ready() {
         const socket = this.state.socket;
         socket.on('login', (o)=>{

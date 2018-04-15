@@ -22,50 +22,45 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, 'index.html'));
 })
 
-// 在线用户
 var onlineUsers = {};
-// 在线用户人数
 var onlineCount = 0;
 
+// listen to client login
 io.on('connection', function(socket) {
-    // 监听客户端的登陆
+
     socket.on('login', function(obj){
 
-        // 用户id设为socketid
+        // let user.id = socket.id
         socket.id = obj.uid;
 
-        // 如果没有这个用户，那么在线人数+1，将其添加进在线用户
+        // add the new user to the list, count++
         if (!onlineUsers.hasOwnProperty(obj.uid)) {
             onlineUsers[obj.uid] = obj.username;
             onlineCount++;
         }
 
-        // 向客户端发送登陆事件，同时发送在线用户、在线人数以及登陆用户
+        // send 'login' event and related objs to client
         io.emit('login', {onlineUsers:onlineUsers, onlineCount:onlineCount, user:obj});
         console.log(obj.username+'connect to the Calculator');
     })
 
-    // 监听客户端的断开连接
+//listen to client leave
     socket.on('disconnect', function() {
-
-        // 如果有这个用户
         if(onlineUsers.hasOwnProperty(socket.id)) {
             var obj = {uid:socket.id, username:onlineUsers[socket.id]};
-
-            // 删掉这个用户，在线人数-1
             delete onlineUsers[socket.id];
             onlineCount--;
 
-            // 向客户端发送登出事件，同时发送在线用户、在线人数以及登出用户
+            // send 'logout'event, update data
             io.emit('logout', {onlineUsers:onlineUsers, onlineCount:onlineCount, user:obj});
             console.log(obj.username+'disconnect to the Calculator');
         }
     })
 
-    // 监听客户端发送的信息
+    // listen to the message(results)
     socket.on('message', function(obj){
         io.emit('message', obj);
-        console.log(obj.username+"Calculated"+ obj.message)
+        console.log(obj.username+" Calculated "+ obj.message)
     })
 
 })

@@ -1,4 +1,4 @@
-@mixin clearfix {
+@mixin clearfix { //clearfloats
   &:after {
     content: "";
     display: table;
@@ -19,12 +19,7 @@ body {
     background-attachment: fixed;
     font-size:15px;
 }
-@media (max-width: $breakpoint-tablet) {
-    body{
-        background-size: cover;
-        background-attachment: fixed;
-    }
-}
+
 .login-box {
     position:absolute;
     display: block;

@@ -33,7 +33,7 @@ export default class Calculator extends Component {
         }
     }
 
-//Listen to click
+//Listen on click
     handleValueInput(data) {
     let curState = this.state.valueText;
     let res = this.checkClickType(curState,data);

@@ -12,13 +12,9 @@ export default class Messages extends Component {
     render() {
         const myId = this.props.myId;
         const arr = this.props.messages;
-        //console.log(this.props.messages,'1');
          arr.sort(function(a, b) {
            return parseFloat(b.timestamp) - parseFloat(a.timestamp);
          });
-        //const arr1 = arr.slice(0, 3);
-        //console.log(arr1,'arr1');
-        //console.log(this.props.messages,'2');
         const oneMessage = this.props.messages.slice(0, 10).map(function(message){
             return(
                     <Message key={message.msgId}  msgUser={message.username} action={message.action} isMe={(myId == message.uid)? true : false} time={message.time}/>
