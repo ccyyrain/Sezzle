@@ -131,7 +131,6 @@ body {
   width: 40%;
   flex-direction: column;
   overflow-y: scroll;
-  overflow-x: scroll;
   border: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
   h1{
@@ -178,8 +177,6 @@ body {
     padding-top: 15px;
     width: 40%;
     height: 500px;
-    /* overflow: hidden; */
-    //border: #fff 1px solid;
     padding-bottom: 10px;
     background-color: #69b996;
     border-radius:20px
