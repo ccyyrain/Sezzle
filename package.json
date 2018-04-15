@@ -1,7 +1,7 @@
 {
   "name": "Sezzle",
   "version": "1.0.0",
-  "description": "A chatroom powered by React and Websocket",
+  "description": "A real-time Calculator based on Websocket and React",
   "main": "index.js",
   "scripts": {
     "test": "",
