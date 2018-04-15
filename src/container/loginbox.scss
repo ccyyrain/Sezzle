@@ -21,10 +21,6 @@ body {
 }
 @media (max-width: $breakpoint-tablet) {
     body{
-<<<<<<< HEAD
-=======
-
->>>>>>> 2fa7b24da011f318d0f29d21321d810b51809b6b
         background-size: cover;
         background-attachment: fixed;
     }
@@ -136,11 +132,7 @@ body {
 .messages {
   float: right;
   margin-right: 50px;
-<<<<<<< HEAD
   height: 550px;
-=======
-  height: 600px;
->>>>>>> 2fa7b24da011f318d0f29d21321d810b51809b6b
   width: 40%;
   flex-direction: column;
   overflow-y: scroll;
@@ -213,13 +205,8 @@ body {
 }
 
 .cal_buttonlist{
-<<<<<<< HEAD
     width: 90%;
     height: 90%;
-=======
-    width: 600px;
-    height: auto;
->>>>>>> 2fa7b24da011f318d0f29d21321d810b51809b6b
     padding: 10px 0;
     display: flex;
     flex-flow: row wrap;
