@@ -7,6 +7,9 @@
     "test": "",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "8.5.x"
+  },
   "dependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.2.10",

@@ -6,6 +6,7 @@ var config = require('./webpack.config');
 var server =require('http').createServer(app);
 var io = require('socket.io')(server);
 var compiler = webpack(config);
+var port = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, '/')))
 
@@ -69,6 +70,6 @@ io.on('connection', function(socket) {
 
 })
 
-server.listen(3300, function(err) {
-    console.log('Listening at *:3300');
+server.listen(port, function(err) {
+    console.log('Listening at *:5000');
 })
