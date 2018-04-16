@@ -5,7 +5,7 @@ Demo: https://boiling-tor-33079.herokuapp.com/
 
 ## My thoughts
 ### ~~Auth0 + MongoDb(Not Work)~~
-Based on my experience of using React + Auth0 + MongoDB, the first idea came into my mind is to use Auth0 as the authentication and MongDB as the database. When user login to the application, system will insert a new record. After caculating, the result will be sent to database. Then the server gets the updated list and sends back to clients. During the process, I found that it was not necessary to use MongoDB as a database beacuse we only need to get the most 10 recent data. And the conversation should be a real-time conversation. So I turned to another method.
+Based on my experience of using React + Auth0 + MongoDB, the first idea came into my mind is to use Auth0 as the authentication and MongDB as the database. When user signs in the application, system will insert a new record. After caculating, the result will be sent to database. Then the server gets the updated list and sends back to clients. During the process, I found that it was not necessary to use MongoDB as a database beacuse we only need to get the most 10 recent results. And the conversation should be a real-time conversation. So I turned to another method.
 ### WebSocket
 Then I thought that I could regard the real-time calculator as a real-time chat combined with calculator. Instead of text, the input is only a equation. So I used **React + WebSocket**. My project is based on a real-time chat room: https://github.com/ymyqwe/Websocket-React-Chatroom.
 
